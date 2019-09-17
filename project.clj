@@ -7,5 +7,7 @@
                  [hickory "0.7.1"]
                  [com.rpl/specter "1.1.2"]
                  [clj-http "3.9.1"]
-                 [cheshire "5.8.1"]]
-  :repl-options {:init-ns albumfinder.core})
+                 [cheshire "5.8.1"]
+                 [environ "1.1.0"]]
+  :repl-options {:init-ns albumfinder.core}
+  :main albumfinder.core)

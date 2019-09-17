@@ -2,9 +2,12 @@
   (:require [hickory.core :as hickory]
             [com.rpl.specter :as sp]
             [clj-http.client :as client]
-            [cheshire.core :as cheshire])
+            [cheshire.core :as cheshire]
+            [environ.core :refer [env]])
   (:use [clojure.string :only (includes? replace)]))
 
+(def consumer-key (env :discogskey))
+(def consumer-secret (env :discogssecret))
 
 (defn search-info
   "Returns a seq containing maps with link and time from all the result of searching the given music string in youtube on the first page"
@@ -86,8 +89,8 @@
   "Extract the first album discogs url from the given artist, returns the url as a string"
   [artist album]
   (letfn [(discogs-search [artist album release-type-filter?]
-            (let [key       "UXVHwvzKZThkKkfSgaZj"
-                  secret    "VsQdUVxysFLiCZvkLwAcjsJrQgBWDWPU"
+            (let [key       consumer-key
+                  secret    consumer-secret
                   url       "https://api.discogs.com/"
                   endpoint  "database/search"
                   query-params {:artist artist :release_title album}

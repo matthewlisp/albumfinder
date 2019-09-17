@@ -1,5 +1,6 @@
 (ns albumfinder.core
-  (:require [albumfinder.crawler :as crawler]))
+  (:require [albumfinder.crawler :as crawler]
+            [cheshire.core :as cheshire]))
 
 
 (defn youtube-musics
@@ -16,3 +17,10 @@
   "given two strings, an artist and album name, Returns a vector of maps, containing youtube video links and time from all the musics of a given album of a given artist "
   [artist album]
   (crawler/album-musics artist album))
+
+
+(defn -main
+  [artist album]
+  (let [search-result (album-musics artist album)]
+    (clojure.pprint/pprint search-result)
+    (cheshire/generate-stream (clojure.java.io/writer (str artist "-" album)))))
