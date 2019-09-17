@@ -5,6 +5,14 @@ FIXME
 ## Usage
 
 ```
+$ export DISCOGSKEY="..."
+``` 
+
+```
+$ export DISCOGSSECRET="..."
+``` 
+
+```
 lein run "nirvana" "nevermind"
 ``` 
 
