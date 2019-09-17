@@ -1,6 +1,18 @@
-(ns albumfinder.core)
+(ns albumfinder.core
+  (:require [albumfinder.crawler :as crawler]))
 
-(defn foo
-  "I don't do a whole lot."
-  [x]
-  (println x "Hello, World!"))
+
+(defn youtube-musics
+  "Given a vector of strings of music names, Returns a vector of maps, containing youtube video links, time, title and thumbnails"
+  [musics]
+  (crawler/youtube-musics musics))
+
+(defn youtube-album-playlist
+  "Given a vector with a single string of album and artist name or a youtube playlist name, Returns a vector of a single map, containing  a youtube album or playlist video link and time"
+  [album-playlist]
+  (crawler/youtube-album-playlist album-playlist))
+
+(defn album-musics
+  "given two strings, an artist and album name, Returns a vector of maps, containing youtube video links and time from all the musics of a given album of a given artist "
+  [artist album]
+  (crawler/album-musics artist album))
