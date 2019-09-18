@@ -79,7 +79,7 @@
   "Given a discogs album url, extract it's tracks names in a vector of strings"
   [discogs-album-url]
   (when discogs-album-url
-    (let [discogs-api-response (client/get discogs-album-url {:headers {:Authorization "Discogs key=UXVHwvzKZThkKkfSgaZj, secret=VsQdUVxysFLiCZvkLwAcjsJrQgBWDWPU"}})
+    (let [discogs-api-response (client/get discogs-album-url {:headers {:Authorization (str "Discogs key=" consumer-key ", secret=" consumer-secret)}})
           status (:status discogs-api-response)
           content (when (= status 200) (cheshire/parse-string (:body discogs-api-response) true))]
       (when  content (sp/select [:tracklist sp/ALL :title] content)))))
