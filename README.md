@@ -1,6 +1,6 @@
-# albumfinder
+# Albumfinder
 
-FIXME
+Albumfinder is a utilitary software to programatically search results for album tracks, just using the artist name and the title of the album! it uses the Discogs API behind the scenes and crawler functions at youtube.com
 
 ## Usage
 
