@@ -22,5 +22,6 @@
 (defn -main
   [artist album]
   (let [search-result (album-musics artist album)]
-    (clojure.pprint/pprint search-result)
-    (cheshire/generate-stream (clojure.java.io/writer (str artist "-" album)))))
+    (println (cheshire/generate-string search-result {:pretty true}))
+    (cheshire/generate-stream search-result (clojure.java.io/writer (str artist "-" album ".json")))
+    (println "Generated your json file on current folder.")))
